@@ -8,5 +8,6 @@
                #:bordeaux-threads)
   :serial t
   :components ((:file "package")
-               (:file "cl-echo-client-server")))
+               (:file "cl-echo-client-server")
+               (:file "cl-echo-server")))
 
