@@ -3,7 +3,7 @@
 (in-package #:cl-echo-client-server)
 
 (defun echo-server (port &key (hostname "127.0.0.1"))
-  "A simple multi-threaded echo server."
+  "A simple multi-threaded echo server. Returns a lexical closure/function that can be used to cleanly shutdown the server."
   (let* ((passive-socket (socket-listen hostname port :reuse-address t))
          (server-thread (make-thread
                          #'(lambda ()
@@ -15,7 +15,7 @@
         (destroy-thread server-thread))))
 
 (defun accept-and-handle (passive-socket)
-  "Accepts and creates a new thread to handle a connection."
+  "Accepts and creates a new thread to handle a connection (and, as a result, can handle many connections at once)."
   (let ((active-socket (socket-accept passive-socket)))
     (make-thread
      #'(lambda ()
