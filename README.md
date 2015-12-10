@@ -2,6 +2,7 @@
 A simple echo client and server in Common Lisp.
 
 I implements this in order to learn socket programming using Common Lisp.
+The server is multi-threaded, and can accept and handle multiple connections at the same time.
 
 #### Dependencies
 
