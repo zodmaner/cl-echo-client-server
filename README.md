@@ -3,6 +3,11 @@ A simple echo client and server in Common Lisp.
 
 I implements this in order to learn socket programming using Common Lisp.
 
+#### Dependencies
+
+* usocket
+* bordeaux-threads
+
 #### Usage
 ###### Server
 Call the `echo-server` function from the REPL.
