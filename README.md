@@ -8,17 +8,17 @@ I implements this in order to learn socket programming using Common Lisp.
 Call the `echo-server` function from the REPL.
 
 An example, which also shows how to define a lexical closure:
-```common lisp
+```lisp
 (defparameter *stop-echo-server* (echo-server 8080))
 ```
 
 The closure can be used to cleanly shutdown the server:
-```common lisp
+```lisp
 (funcall *stop-echo-server*)
 ```
 
 ###### Client
 The client can be started by calling the function `echo-client`:
-```common lisp
+```lisp
 (echo-client 8080)
 ```
