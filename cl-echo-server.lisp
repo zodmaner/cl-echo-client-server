@@ -4,7 +4,7 @@
 
 (defvar *echo-server-running* nil
   "Represents a running state of the echo server thread and is used to
-control the thread itself.")
+control the thread.")
 
 (defun echo-server (port &key (hostname "127.0.0.1"))
   "Starts a simple multi-threaded echo server and returns a lexical
@@ -46,7 +46,8 @@ This enables our echo server to handle many connections at once."
 (defun handle (stream)
   "Reads, processes, and writes data back to the client.
 This function will run until a client disconnects."
-  (do ((echo-text (read-line stream nil) (read-line stream nil)))
-      ((null echo-text)) ; loops until the client disconnects
-    (format stream "echo: ~A~%" echo-text)
-    (force-output stream)))
+  (loop
+     :for echo-text := (read-line stream nil)
+     :while (not (null echo-text)) :do
+     (format stream "echo: ~A~%" echo-text)
+     (force-output stream)))
